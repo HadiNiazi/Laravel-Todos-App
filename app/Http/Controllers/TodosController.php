@@ -23,6 +23,7 @@ class TodosController extends Controller
     public function store(TodoCreateRequest $request)
     {
          Todo::create($request->all());
+        $request->session()->flash('todo_created');
           return redirect('todo');
     }
 
@@ -40,17 +41,22 @@ class TodosController extends Controller
     public function update(Request $request, $id)
     {
         Todo::findOrFail($id)->update($request->all());
+        $request->session()->flash('todo_updated');
         return redirect('todo');
     }
     public function destroy(Request $request, $id)
     {
+        $request->session()->flash('todo_deleted');
        $todo = Todo::findOrFail($id)->delete();
+
        return redirect('todo');
     }
-    public function completed($id){
+    public function completed(Request $request, $id){
         $todo = Todo::findOrFail($id);
         $todo->completed = true;
         $todo->update();
+        $request->session()->flash('todo_completed');
+
         return redirect('todo');
     }
 }

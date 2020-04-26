@@ -42,7 +42,10 @@
         toastr.success('Updating process started. :)', 'Success Alert', {timeOut: 2000})
     });
     $(".created_success").click(function(){
-        toastr.success('Creating process started. :)', 'Success Alert', {timeOut: 500})
+        toastr.info('Creating process started. :)', 'Success Alert', {timeOut: 500})
+    });
+    $(".completing_success").click(function(){
+        toastr.success('Completing process started. :)', 'Success Alert', {timeOut: 500})
     });
 
     $(".error").click(function(){

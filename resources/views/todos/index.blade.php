@@ -13,6 +13,42 @@
 
 
         <h1 class="text-center my-5">TODOS PAGE</h1>
+        @if(session()->has('todo_created'))
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-default">
+                        <p class="text-center alert alert-primary mt-4">Todo Created Successfully.</p>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if(session()->has('todo_updated'))
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-default">
+                        <p class="text-center alert alert-success mt-4">Todo Updated Successfully.</p>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if(session()->has('todo_completed'))
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-default">
+                        <p class="text-center alert alert-success mt-4">Todo Completed Successfully.</p>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if(session()->has('todo_deleted'))
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-default">
+                        <p class="text-center alert alert-danger mt-4">Todo Deleted Successfully.</p>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
@@ -28,7 +64,7 @@
                                 <li class="list-group-item ">
                                     {{$todo->name}}
                                    @if(!$todo->completed)
-                                        <a href="{{url('todo/'.$todo->id.'/completed')}}" class="btn btn-warning btn-sm float-right success">Complete</a>
+                                        <a href="{{url('todo/'.$todo->id.'/completed')}}" class="btn btn-warning btn-sm float-right completing_success">Complete</a>
                                     @endif
                                    <div style="margin-top: -40px">
                                        @if($todo->completed)
